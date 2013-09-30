@@ -3,18 +3,14 @@ from django.db import models
 
 class Contestant(models.Model):
     name = models.CharField(max_length=200)
-    # is_survivor = models.BooleanField(default=True)
-    # killed_by = models.ForeignKey('People', blank=True, null=True)
 
     class Meta:
-        # app_label = "breaking_bad"
         verbose_name_plural = "Contestants"
 
     def __unicode__(self):
         return self.name
 
 class People(models.Model):
-    # contestant = models.ForeignKey(Contestant)
     name = models.CharField(max_length=50)
     
     class Meta:
@@ -31,12 +27,3 @@ class Result(models.Model):
 
     def __unicode__(self):
         return str(self.name) + " answer for " + str(self.character)
-
-    # result = models.ManyToManyField()
-#     walter = models.ForeignKey('People', related_name="results")
-#     marie = models.ForeignKey('People', related_name="results")
-#     skyler = models.ForeignKey('People', related_name="results")
-#     jesse = models.ForeignKey('People', related_name="results")
-#     flynn = models.ForeignKey('People', related_name="results")
-#     saul = models.ForeignKey('People', related_name="results")
-#     todd = models.ForeignKey('People', related_name="results")

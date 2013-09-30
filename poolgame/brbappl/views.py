@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from models import People, Result, Contestant
 from forms import ContestantForm, TestQuestion
@@ -10,7 +9,7 @@ from django.db.models import Q
 
 def questionnaire(request, contestant):
     characters = People.objects.filter(~Q(name='Nobody'))
-    cont = Contestant.objects.get(name=contestant)
+    cont = get_object_or_404(Contestant, name=contestant)
 
     if request.method == 'POST':
         for person in characters:
