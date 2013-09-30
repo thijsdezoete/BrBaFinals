@@ -1,0 +1,16 @@
+{% extends 'brbappl/base.html' %}
+{% block content %}
+
+<h1>The end of the series ends like this:</h1><p>
+<form action="" method="post">
+	{% csrf_token %}
+	{% for name, form in forms.items %}
+	<p>
+		<b>{{ name }}</b>
+		{{ form.as_p }}
+	</p>
+	<hr/>
+	{% endfor %}
+<input type="submit">
+</form>
+{% endblock content %}
